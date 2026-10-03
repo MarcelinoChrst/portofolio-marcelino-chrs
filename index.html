@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcelino Christian Portofolio | Level 36 PPLG Developer Realm</title>
+
+    <!-- Google Font Pixel Art -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Overlay Efek CRT & Scanlines -->
+    <div class="crt-overlay" id="crt-overlay"></div>
+
+    <!-- HUD GAME TOPBAR -->
+    <header class="hud-topbar">
+        <div class="hud-profil">
+            <a href="#hero" class="hud-logo">🛡️ MARCELINO <span class="badge-lv">LV.36</span></a>
+            
+            <div class="hud-bars">
+                <div class="bar-row">
+                    <span class="bar-label">HP</span>
+                    <div class="bar-track hp-track"><div class="bar-fill hp-fill" style="width: 100%;"></div></div>
+                    <span class="bar-val">100/100</span>
+                </div>
+                <div class="bar-row">
+                    <span class="bar-label">MP</span>
+                    <div class="bar-track mp-track"><div class="bar-fill mp-fill" style="width: 85%;"></div></div>
+                    <span class="bar-val">850/1000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grup-toggle-header">
+            <button type="button" class="tombol-pixel" id="tombol-sfx" onclick="toggleSFX()">🔊 SFX</button>
+            <button type="button" class="tombol-pixel" id="tombol-crt" onclick="toggleCRT()">📺 CRT</button>
+            <button type="button" class="tombol-toggle-menu" id="tombol-toggle-menu" onclick="toggleMenuMobile()">☰ MENU</button>
+        </div>
+
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#hero" onclick="tutupMenuMobile()">[1] BERANDA</a>
+            <a href="#status" onclick="tutupMenuMobile()">[2] STATUS</a>
+            <a href="#proyek" onclick="tutupMenuMobile()">[3] QUESTS</a>
+            <a href="#kontak" onclick="tutupMenuMobile()">[4] KONTAK</a>
+        </nav>
+    </header>
+
+    <main class="wadah-utama">
+
+        <!-- SECTION ARENA PIXEL BATTLE (ANIMASI DUA KARAKTER BERANTEM) -->
+        <section class="kotak-pixel arena-battle">
+            <div class="head-arena">
+                <span class="judul-arena">⚔️ LIVE PIXEL BATTLE ARENA ⚔️</span>
+                <span class="sub-arena">MARCELINO VS BUG MONSTER</span>
+            </div>
+
+            <div class="panggung-bertarung">
+                <!-- Petarung 1: Marcelino Knight -->
+                <div class="petarung petarung-hero" id="petarung-hero">
+                    <div class="bar-hp-petarung">
+                        <span class="nama-fighter">MARCELINO</span>
+                        <div class="track-hp-fighter"><div class="fill-hp-fighter hero-hp" id="hero-hp-bar"></div></div>
+                    </div>
+                    <div class="sprite-petarung sprite-hero">🗡️🧙‍♂️</div>
+                </div>
+
+                <!-- Efek Pertarungan -->
+                <div class="area-efek-serangan" id="efek-serangan">
+                    <span class="pop-damage" id="pop-damage">-99 CRIT!</span>
+                    <div class="tebasan-pedang" id="tebasan">⚡⚔️🔥</div>
+                </div>
+
+                <!-- Petarung 2: Dark Bug Monster -->
+                <div class="petarung petarung-enemy" id="petarung-enemy">
+                    <div class="bar-hp-petarung">
+                        <span class="nama-fighter">BUG MONSTER</span>
+                        <div class="track-hp-fighter"><div class="fill-hp-fighter enemy-hp" id="enemy-hp-bar"></div></div>
+                    </div>
+                    <div class="sprite-petarung sprite-enemy">👾👹</div>
+                </div>
+            </div>
+
+            <div class="log-arena">
+                <p id="teks-log-battle">> Marcelino melancarkan "CLEAN CODE SLASH"! Monster terkena 99 Damage!</p>
+                <button type="button" class="tombol-pixel tombol-serang" disabled>⚔️ AUTO BATTLE ACTIVE</button>
+            </div>
+        </section>
+
+        <!-- SECTION 0: HERO DIALOGUE BOX -->
+        <section id="hero" class="kotak-pixel dialog-box">
+            <div class="avatar-npc">
+                <img src="https://i.imgur.com/NvuoDIV.jpeg" alt="Avatar Marcelino Christian">
+                <span class="label-npc">GUILD MASTER</span>
+            </div>
+            
+            <div class="konten-dialog">
+                <h1 class="nama-npc">MARCELINO CHRISTIAN</h1>
+                <p class="teks-ketik" id="teks-dialog-hero">Selamat datang, Petualang! Saya adalah Siswa dari SMK Krian 1 Sidoarjo. Siap mengeksplorasi Quest dan Skill milik saya?</p>
+                
+                <div class="aksi-dialog">
+                    <a href="#proyek" class="tombol-pixel tombol-aksi">📜 LIHAT QUEST LOG</a>
+                    <a href="#kontak" class="tombol-pixel tombol-aksi tombol-sekunder">✉️ KIRIM SCROLL (EMAIL)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: PLAYER STATUS & SKILL TREE -->
+        <section id="status" class="kotak-pixel">
+            <h2 class="judul-bagian">📊 PLAYER STATS & SKILL TREE</h2>
+            
+            <div class="grid-status">
+                <div class="kartu-stats-pemain">
+                    <div class="bingkai-foto">
+                        <img src="https://i.imgur.com/NvuoDIV.jpeg" alt="Foto Profil Marcelino Christian">
+                    </div>
+                    <div class="atrib-pemain">
+                        <p><strong>NAME:</strong> Marcelino Christian</p>
+                        <p><strong>CLASS:</strong> Small Developer</p>
+                        <p><strong>GUILD:</strong> SMK Krian 1 Sidoarjo</p>
+                        <p><strong>SPECIALTY:</strong> Yapping & Coding</p>
+                        <p><strong>ALIGNMENT:</strong> Chaotic Creative</p>
+                        <div class="exp-row">
+                            <span>EXP: 35,369 / 100,000</span>
+                            <div class="bar-track exp-track"><div class="bar-fill exp-fill" style="width: 36%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wadah-keahlian">
+                    <div class="kotak-bio-singkat">
+                        <h3 class="subjudul-pixel">📜 ABOUT ME</h3>
+                        <p class="deskripsi-proyek">
+                            Hello! I’m Marcelino Christian, a Software Engineering student at SMK Krian 1 Sidoarjo. I’m interested in games and programming.
+                        </p>
+                    </div>
+
+                    <h3 class="subjudul-pixel">⚔️ ACTIVE ABILITIES</h3>
+                    
+                    <div class="item-keahlian">
+                        <div class="label-keahlian"><span>HTML [FRONTEND]</span> <span>50%</span></div>
+                        <div class="bingkai-bilah"><div class="isi-bilah" style="width: 50%;"></div></div>
+                    </div>
+
+                    <div class="item-keahlian">
+                        <div class="label-keahlian"><span>CSS / FLEXBOX</span> <span>75%</span></div>
+                        <div class="bingkai-bilah"><div class="isi-bilah" style="width: 75%;"></div></div>
+                    </div>
+
+                    <div class="item-keahlian">
+                        <div class="label-keahlian"><span>JAVASCRIPT [LOGIC]</span> <span>75%</span></div>
+                        <div class="bingkai-bilah"><div class="isi-bilah" style="width: 75%;"></div></div>
+                    </div>
+
+                    <div class="item-keahlian">
+                        <div class="label-keahlian"><span>PYTHON [ALGORITHM]</span> <span>20%</span></div>
+                        <div class="bingkai-bilah"><div class="isi-bilah" style="width: 20%;"></div></div>
+                    </div>
+
+                    <div class="item-keahlian">
+                        <div class="label-keahlian"><span>JAVA [DESKTOP/CLI]</span> <span>10%</span></div>
+                        <div class="bingkai-bilah"><div class="isi-bilah" style="width: 10%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: QUEST LOG (PROYEK) -->
+        <section id="proyek" class="kotak-pixel">
+            <h2 class="judul-bagian">📜 QUEST LOG (PROJECTS)</h2>
+            
+            <div class="filter-quest">
+                <button type="button" class="tombol-filter aktif" onclick="filterQuest('all', this)">[ALL QUESTS]</button>
+                <button type="button" class="tombol-filter" onclick="filterQuest('web', this)">[WEB UI / EXCEL]</button>
+                <button type="button" class="tombol-filter" onclick="filterQuest('python', this)">[PYTHON]</button>
+                <button type="button" class="tombol-filter" onclick="filterQuest('java', this)">[JAVA]</button>
+            </div>
+
+            <div class="grid-proyek">
+                
+                <!-- Quest 1 -->
+                <article class="kartu-proyek item-quest" data-kategori="web">
+                    <div class="head-quest">
+                        <span class="badge-status-quest selesai">✔ COMPLETED</span>
+                        <span class="reward-quest">+500 EXP</span>
+                    </div>
+                    <span class="ikon-proyek">🛒</span>
+                    <h3 class="judul-proyek">Pengolahan Data Laporan Penjualan Toko Elektronik</h3>
+                    <p class="deskripsi-proyek">Pengolahan data laporan penjualan toko elektronik menggunakan formula dan algoritma kalkulasi terstruktur.</p>
+                    <div class="tag-teknologi">
+                        <span class="label-teknologi">Excel</span>
+                        <span class="label-teknologi">Algoritma</span>
+                    </div>
+                    <button type="button" class="tombol-pixel tombol-full" onclick="bukaModalProyek('Pengolahan Data Laporan Penjualan Toko Elektronik', 'Sistem pengolahan data laporan penjualan toko elektronik menggunakan formula terstruktur, rekapan transaksi, dan otomatisasi kalkulasi.', ['Excel', 'Algoritma'], 'COMPLETED')">INSPECT QUEST</button>
+                </article>
+
+                <!-- Quest 2 (KALKULATOR PYTHON - LENGKAP DENGAN DEMO DIRECT TAB) -->
+                <article class="kartu-proyek item-quest" data-kategori="python">
+                    <div class="head-quest">
+                        <span class="badge-status-quest selesai">✔ COMPLETED</span>
+                        <span class="reward-quest">+350 EXP</span>
+                    </div>
+                    <span class="ikon-proyek">🧮</span>
+                    <h3 class="judul-proyek">KALKULATOR PYTHON</h3>
+                    <p class="deskripsi-proyek">Aplikasi konsol Python interaktif untuk menghitung operasi aritmatika dan logika pemrograman dasar.</p>
+                    <div class="tag-teknologi">
+                        <span class="label-teknologi">Python</span>
+                        <span class="label-teknologi">CLI</span>
+                        <span class="label-teknologi">Demo Live</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-direction: column;">
+                        <button type="button" class="tombol-pixel tombol-full tombol-demo-utama" onclick="bukaDemoKalkulator()">▶ COBA DEMO KALKULATOR</button>
+                        <button type="button" class="tombol-pixel tombol-full tombol-sekunder" onclick="bukaModalProyek('KALKULATOR PYTHON', 'Aplikasi konsol Python interaktif berbasis CLI untuk mengeksekusi kalkulasi matematika cepat serta logika percabangan.', ['Python', 'Algoritma', 'CLI'], 'COMPLETED')">INSPECT QUEST</button>
+                    </div>
+                </article>
+
+                <!-- Quest 3 -->
+                <article class="kartu-proyek item-quest" data-kategori="java">
+                    <div class="head-quest">
+                        <span class="badge-status-quest selesai">✔ COMPLETED</span>
+                        <span class="reward-quest">+400 EXP</span>
+                    </div>
+                    <span class="ikon-proyek">☕</span>
+                    <h3 class="judul-proyek">MINI PROJECT KASIR JAVA</h3>
+                    <p class="deskripsi-proyek">Program kasir toko berbasis Java menggunakan tipe data dasar, kalkulasi total, dan validasi diskon member.</p>
+                    <div class="tag-teknologi">
+                        <span class="label-teknologi">Java</span>
+                        <span class="label-teknologi">CLI</span>
+                    </div>
+                    <button type="button" class="tombol-pixel tombol-full" onclick="bukaModalProyek('MINI PROJECT KASIR JAVA', 'Sistem perhitungan transaksi toko berbasis Java CLI. Dilengkapi logika diskon member, kalkulasi pajak, dan cetak struk belanja.', ['Java', 'CLI', 'Logic'], 'COMPLETED')">INSPECT QUEST</button>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: KONTAK BOARD -->
+        <section id="kontak" class="kotak-pixel">
+            <h2 class="judul-bagian">📬 TAVERN BULLETIN (HUBUNGI SAYA)</h2>
+            
+            <form class="formulir-kontak" action="https://formspree.io/f/mwlpnzpl" method="POST">
+                <input type="hidden" name="access_key" value="https://formspree.io/f/mwlpnzpl">
+                <input type="hidden" name="subject" value="Pesan Baru dari Portofolio Web (Marcelino Christian)">
+                <input type="hidden" name="from_name" value="Portofolio RPG Web">
+
+                <div class="grup-input">
+                    <label for="nama-pengirim">NAMA PETUALANG / ADVENTURER:</label>
+                    <input type="text" id="nama-pengirim" name="nama" class="input-pixel" placeholder="Masukkan namamu..." required>
+                </div>
+                <div class="grup-input">
+                    <label for="email-pengirim">BURUNG MERPATI / EMAIL:</label>
+                    <input type="email" id="email-pengirim" name="email" class="input-pixel" placeholder="email@domain.com" required>
+                </div>
+                <div class="grup-input">
+                    <label for="pesan-pengirim">ISI PESAN QUEST:</label>
+                    <textarea id="pesan-pengirim" name="pesan" class="input-pixel" rows="4" placeholder="Tuliskan pesan atau penawaran kerja sama..." required></textarea>
+                </div>
+                <button type="submit" class="tombol-pixel tombol-kirim">SEND MESSAGE SCROLL ✉️</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="inventory-links">
+                <p class="judul-inventory">🎒 EQUIPMENT & SOCIAL SLOTS</p>
+                <div class="grid-inventory">
+                    <a href="mailto:riru279@gmail.com" class="slot-inv" title="Send Email">📧 <span>EMAIL</span></a>
+                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="slot-inv" title="GitHub">🐙 <span>GITHUB</span></a>
+                    <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="slot-inv" title="Instagram">📸 <span>INSTAGRAM</span></a>
+                    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="slot-inv" title="LinkedIn">💼 <span>LINKEDIN</span></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>MARCELINO CHRISTIAN UI/UX RPG PORTFOLIO © 2026 - SMK KRIAN 1 SIDOARJO</p>
+                <p class="sub-footer">POWERED BY VITE + RETRO PIXEL ENGINE</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- RPG DIALOG MODAL POPUP (INSPECT QUEST) -->
+    <div class="modal-overlay" id="modal-proyek">
+        <div class="kotak-pixel modal-konten">
+            <div class="header-modal">
+                <span class="badge-status-quest" id="modal-status">STATUS</span>
+                <button type="button" class="tombol-tutup-modal" onclick="tutupModalProyek()">✖</button>
+            </div>
+            <h3 class="judul-modal" id="modal-judul">NAMA QUEST</h3>
+            <p class="deskripsi-modal" id="modal-deskripsi">Deskripsi rinci quest akan dimuat di sini...</p>
+            <div class="tag-teknologi" id="modal-tags"></div>
+            <button type="button" class="tombol-pixel tombol-full" onclick="tutupModalProyek()">CLOSE DIALOG [ESC]</button>
+        </div>
+    </div>
+
+    <!-- TAB MODAL POPUP DEMO KALKULATOR PYTHON INTERAKTIF -->
+    <div class="modal-overlay" id="modal-kalkulator">
+        <div class="kotak-pixel modal-konten modal-kalkulator-konten">
+            <div class="header-modal">
+                <span class="badge-status-quest" style="border-color: var(--emas-utama); color: var(--emas-utama);">🐍 PYTHON 3.12 CLI DEMO</span>
+                <button type="button" class="tombol-tutup-modal" onclick="tutupDemoKalkulator()">✖</button>
+            </div>
+            
+            <h3 class="judul-modal">🧮 INTERACTIVE PYTHON CALCULATOR</h3>
+            <p class="deskripsi-modal" style="margin-bottom: 10px;">Coba langsung kalkulator Python tanpa meninggalkan halaman portofolio!</p>
+
+            <!-- Tampilan Screen Kalkulator CLI Python -->
+            <div class="kalkulator-screen">
+                <div class="screen-prompt">>>> python main.py</div>
+                <div class="screen-history" id="calc-history">Calculated result:</div>
+                <input type="text" id="calc-display" class="screen-input" value="0" readonly>
+            </div>
+
+            <!-- Grid Tombol Kalkulator Pixel -->
+            <div class="grid-tombol-kalkulator">
+                <button type="button" class="btn-calc btn-op" onclick="hapusKalkulator()">C</button>
+                <button type="button" class="btn-calc btn-op" onclick="backspaceKalkulator()">DEL</button>
+                <button type="button" class="btn-calc btn-op" onclick="tambahInputKalkulator('%')">%</button>
+                <button type="button" class="btn-calc btn-op" onclick="tambahInputKalkulator('/')">/</button>
+
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('7')">7</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('8')">8</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('9')">9</button>
+                <button type="button" class="btn-calc btn-op" onclick="tambahInputKalkulator('*')">*</button>
+
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('4')">4</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('5')">5</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('6')">6</button>
+                <button type="button" class="btn-calc btn-op" onclick="tambahInputKalkulator('-')">-</button>
+
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('1')">1</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('2')">2</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('3')">3</button>
+                <button type="button" class="btn-calc btn-op" onclick="tambahInputKalkulator('+')">+</button>
+
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('0')">0</button>
+                <button type="button" class="btn-calc" onclick="tambahInputKalkulator('.')">.</button>
+                <button type="button" class="btn-calc btn-sama" onclick="hitungKalkulator()" style="grid-column: span 2;">= EXECUTE</button>
+            </div>
+
+            <button type="button" class="tombol-pixel tombol-full" onclick="tutupDemoKalkulator()" style="margin-top: 14px;">TUTUP DEMO [ESC]</button>
+        </div>
+    </div>
+
+    <button type="button" class="tombol-pixel tombol-scroll-atas" id="tombol-scroll-atas" onclick="keAtasHalaman()">▲ TOP</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
